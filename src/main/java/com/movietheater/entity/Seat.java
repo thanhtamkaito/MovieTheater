@@ -21,4 +21,7 @@ public class Seat {
     @OneToMany(mappedBy = "seat")
     private Set<ScheduleSeat> scheduleSeats =new HashSet<>();
 
+
+
+
 }

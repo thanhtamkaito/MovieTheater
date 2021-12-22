@@ -22,6 +22,7 @@ public class ScheduleSeat {
     @JoinColumn(name = "seat_id")
     private Seat seat;
 
-
+    @OneToOne(mappedBy = "scheduleSeat")
+    private Invoice invoice;
 
 }

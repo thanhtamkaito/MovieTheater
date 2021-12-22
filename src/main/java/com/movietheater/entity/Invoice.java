@@ -3,6 +3,8 @@ package com.movietheater.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Invoice {
@@ -12,9 +14,6 @@ public class Invoice {
     private  String invoiceId;
     private int addScore;
     private Date bookingDate;
-    private String movieName;
-    private Date scheduleShow;
-    private String scheduleShowTime;
     private  int status;
     private  int totalMoney;
     private  int userScore;
@@ -23,6 +22,8 @@ public class Invoice {
     @JoinColumn(name = "account_id", nullable = false)
     private Account account;
 
-
+    @OneToOne
+    @JoinColumn( name = "schedule_seat")
+    private  ScheduleSeat scheduleSeat;
 
 }
