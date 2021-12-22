@@ -1,5 +1,7 @@
 package com.movietheater.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,5 +14,6 @@ public class Member {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id",nullable = false )
+    @JsonIgnoreProperties("")
     private  Account account;
 }

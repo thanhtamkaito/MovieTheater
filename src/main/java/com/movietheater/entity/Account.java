@@ -1,11 +1,12 @@
 package com.movietheater.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
-import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ public class Account {
     @NotNull
     private String userName;
     private String address;
-    private Date dateOfBirth;
+    private LocalDate LocalDateOfBirth;
     private  String email;
     private String fullName;
     private String gender;
@@ -25,11 +26,12 @@ public class Account {
     private String image;
     private String password;
     private  String phone;
-    private Date registerDate;
+    private LocalDate registerLocalDate;
     private String status;
 
     @OneToMany(mappedBy = "account",fetch = FetchType.EAGER)
-    private Set<Invoice> accounts = new HashSet<>();
+    @JsonIgnoreProperties("account")
+    private Set<Invoice> invoices = new HashSet<>();
 
     @OneToOne(mappedBy = "account")
     private Member member;
@@ -39,6 +41,13 @@ public class Account {
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
+    @JsonIgnoreProperties("accounts")
     private Roles roles;
+
+
+
+
+
+
 
 }

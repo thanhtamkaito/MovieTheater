@@ -1,5 +1,7 @@
 package com.movietheater.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +17,7 @@ public class CinemaRoom {
 
 
     @OneToMany(mappedBy = "cinemaRoom", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("cinemaRoom")
     private Set<Seat> seats = new HashSet<>();
 
 
@@ -23,6 +26,7 @@ public class CinemaRoom {
     private  Ticket ticket;
 
     @OneToMany( mappedBy = "cinemaRoom",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("cinemaRoom")
     private Set<Movie> movies = new HashSet<>();
 
 }
