@@ -2,6 +2,11 @@ package com.movietheater.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,14 +15,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Movie {
     @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(unique = true)
     private  String movieId;
     private String actor;
     private  String content;
     private String directtor;
     private  int duration;
-    private  Date fromDate;
+    private  LocalDate fromDate;
     private String movieProductionCompany;
     private LocalDate toDate;
     private  String version;
@@ -54,4 +66,22 @@ public class Movie {
     private  CinemaRoom cinemaRoom;
 
 
+    public Movie(String actor, String content
+            , String directtor, int duration, LocalDate fromDate
+            , String movieProductionCompany, LocalDate toDate
+            , String version, String movieNamEnglish, String movieNameVN
+            , String lageImage, String smallImage) {
+        this.actor = actor;
+        this.content = content;
+        this.directtor = directtor;
+        this.duration = duration;
+        this.fromDate = fromDate;
+        this.movieProductionCompany = movieProductionCompany;
+        this.toDate = toDate;
+        this.version = version;
+        this.movieNamEnglish = movieNamEnglish;
+        this.movieNameVN = movieNameVN;
+        this.lageImage = lageImage;
+        this.smallImage = smallImage;
+    }
 }
