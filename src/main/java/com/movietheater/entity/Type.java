@@ -17,8 +17,8 @@ public class Type {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "movie_type"
-    ,joinColumns = @JoinColumn(name = "movie_id")
-    ,inverseJoinColumns = @JoinColumn(name = "type_id"))
+    ,joinColumns = @JoinColumn(name = "type_id")
+    ,inverseJoinColumns = @JoinColumn(name = "movie_id"))
     @JsonIgnoreProperties("types")
     private Set<Movie> movies = new HashSet<>();
 

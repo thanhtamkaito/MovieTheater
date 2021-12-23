@@ -17,8 +17,8 @@ public class Schedule {
 
     @ManyToMany
     @JoinTable( name = "movie_shedule"
-    , joinColumns = @JoinColumn( name = "movie_id")
-    ,inverseJoinColumns = @JoinColumn( name = "schedule_id"))
+    , joinColumns = @JoinColumn( name = "schedule_id")
+    ,inverseJoinColumns = @JoinColumn( name = "movie_id"))
     @JsonIgnoreProperties("schedules")
     private Set<Movie> movies = new HashSet<>();
 

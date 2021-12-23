@@ -29,8 +29,8 @@ public class Movie {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "movie_date"
-    ,joinColumns = @JoinColumn(name = "showDate_id")
-    ,inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    ,joinColumns = @JoinColumn(name = "movie_id")
+    ,inverseJoinColumns = @JoinColumn(name = "showDate_id"))
     @JsonIgnoreProperties("movies")
     private Set<ShowDate> showDates = new HashSet<>();
 
