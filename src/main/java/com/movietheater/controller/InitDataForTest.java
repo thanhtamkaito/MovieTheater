@@ -14,10 +14,11 @@ public class InitDataForTest {
     InitDataForTestService initDataForTestService;
     @PostConstruct
     public  void  InitData(){
-//        initDataForTestService.initAccount();
-//        initDataForTestService.initMovie();
-//        initDataForTestService.initScheduleSeat();
-//        initDataForTestService.initInvoice();
+        initDataForTestService.initAccount();
+        initDataForTestService.initMovie();
+        initDataForTestService.initScheduleSeat();
+        initDataForTestService.initInvoice();
+        initDataForTestService.initType();
 
     }
 }

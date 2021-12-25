@@ -20,6 +20,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class Movie {
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
@@ -47,9 +48,20 @@ public class Movie {
     private Set<ShowDate> showDates = new HashSet<>();
 
 
-    @ManyToMany(mappedBy = "movies", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "movie_type"
+            ,joinColumns = @JoinColumn(name = "movie_id")
+            ,inverseJoinColumns = @JoinColumn(name = "type_id"))
     @JsonIgnoreProperties("movies")
-    private  Set<Type> types = new HashSet<>();
+    private  Set<Type> types ;
+
+
+//    @ManyToMany(mappedBy = "movies", fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+//    @JsonIgnoreProperties("movies")
+//    private  Set<Type> types ;
+
+
+
 
     @ManyToMany(mappedBy = "movies", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("moviess")
@@ -83,5 +95,22 @@ public class Movie {
         this.movieNameVN = movieNameVN;
         this.lageImage = lageImage;
         this.smallImage = smallImage;
+    }
+
+    public Movie(String actor, String content, String directtor, int duration, LocalDate fromDate, String movieProductionCompany, LocalDate toDate, String version, String movieNamEnglish, String movieNameVN, String lageImage, String smallImage, CinemaRoom cinemaRoom, Set<Type> types) {
+        this.actor = actor;
+        this.content = content;
+        this.directtor = directtor;
+        this.duration = duration;
+        this.fromDate = fromDate;
+        this.movieProductionCompany = movieProductionCompany;
+        this.toDate = toDate;
+        this.version = version;
+        this.movieNamEnglish = movieNamEnglish;
+        this.movieNameVN = movieNameVN;
+        this.lageImage = lageImage;
+        this.smallImage = smallImage;
+        this.types = types;
+        this.cinemaRoom = cinemaRoom;
     }
 }

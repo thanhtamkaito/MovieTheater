@@ -29,6 +29,8 @@ public class InitDataForTestService {
 
     @Autowired
     ScheduleSeatRepo scheduleSeatRepo;
+    @Autowired
+    TypeRepo typeRepo;
 
 
 
@@ -162,6 +164,20 @@ public class InitDataForTestService {
 
     }
 
+    public  void  initType(){
+        List<Type> types = List.of(
+                new Type(1,"Hanh dong"),
+                new Type(2,"Kinh di"),
+                new Type(3,"Tham hiem"),
+                new Type(4,"Vien Tuong"),
+                new Type(5,"Co trang")
+        );
+
+        typeRepo.saveAll(types);
+
+
+    }
+
 
     public ResponInvoiceDTO getTicket(String userName){
 
@@ -174,5 +190,7 @@ public class InitDataForTestService {
         return responInvoiceDTO;
 
     }
+
+
 
 }
